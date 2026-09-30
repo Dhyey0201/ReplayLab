@@ -1,0 +1,6 @@
+(library
+ (name replaylab)
+ (libraries unix yojson digestif)
+ (foreign_stubs
+  (language c)
+  (names timing_stubs)))

@@ -1,0 +1,13 @@
+_build/
+_opam/
+.opam-root/
+.tools/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+artifacts/
+runs/
+.DS_Store
+.ruff_cache/

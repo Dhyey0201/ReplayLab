@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+<rect width="900" height="420" fill="white"/><text x="25" y="30" font-family="sans-serif" font-size="19">Native workload elapsed time — median of five repetitions</text>
+<text x="25" y="88" font-family="sans-serif">durable-session</text><rect x="260" y="70" width="450.0" height="28" fill="#2463a5"/><text x="720.0" y="88" font-family="sans-serif">0.354145750 s</text>
+<text x="25" y="143" font-family="sans-serif">json-batch</text><rect x="260" y="125" width="20.4" height="28" fill="#2463a5"/><text x="290.4" y="143" font-family="sans-serif">0.016057125 s</text>
+<text x="25" y="198" font-family="sans-serif">memory-session</text><rect x="260" y="180" width="7.5" height="28" fill="#2463a5"/><text x="277.5" y="198" font-family="sans-serif">0.005910042 s</text>
+<text x="25" y="253" font-family="sans-serif">recovery</text><rect x="260" y="235" width="35.5" height="28" fill="#2463a5"/><text x="305.5" y="253" font-family="sans-serif">0.027943750 s</text>
+<text x="25" y="308" font-family="sans-serif">recovery-with-snapshot</text><rect x="260" y="290" width="142.3" height="28" fill="#2463a5"/><text x="412.3" y="308" font-family="sans-serif">0.112008292 s</text>
+<text x="25" y="390" font-family="sans-serif">Scopes differ; these bars are costs, not implementation speedups. See environment.json.</text></svg>

@@ -1,0 +1,10 @@
+{
+  "value": {
+    "z": [],
+    "a": "\n\t\u0000\"\\",
+    "b": null,
+    "schema_version": 1
+  },
+  "canonical_ascii": "{\"a\":\"\\u000a\\u0009\\u0000\\\"\\\\\",\"b\":null,\"schema_version\":1,\"z\":[]}",
+  "sha256": "a4f2faa587b161bfc240901dd47eac583d3d11e629c20e1da9adfd3eb7baf7d7"
+}

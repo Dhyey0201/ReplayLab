@@ -1,0 +1,21 @@
+name: ReplayLab correctness
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  release-gates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14.3'
+      - run: make setup
+      - run: make check
+      - run: make demo demo-crash demo-shrink
+      - if: github.event_name == 'workflow_dispatch'
+        run: make test-deep
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: replaylab-experiments
+          path: artifacts/

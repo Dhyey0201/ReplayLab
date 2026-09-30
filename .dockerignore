@@ -1,0 +1,11 @@
+.git
+.opam-root
+_opam
+.tools
+.venv
+_build
+artifacts
+.ruff_cache
+**/__pycache__
+**/*.pyc
+benchmarks/results/local-*

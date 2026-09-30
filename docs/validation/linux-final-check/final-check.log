@@ -1,0 +1,56 @@
+/work/replaylab/.tools/opam exec --switch=/work/replaylab -- dune build --root .
+.venv/bin/python -m unittest discover -s test -p 'test_*.py' -v
+test_native_scopes_counts_and_samples (test_benchmark.BenchmarkTests.test_native_scopes_counts_and_samples) ... ok
+test_sigint_closes_durable_session (test_cli.CLITests.test_sigint_closes_durable_session) ... ok
+test_usage_and_protocol_exit_codes (test_cli.CLITests.test_usage_and_protocol_exit_codes) ... ok
+test_crash_timeout_and_invalid_output_keep_artifacts (test_controller_failures.ControllerTests.test_crash_timeout_and_invalid_output_keep_artifacts) ... ok
+test_delays_drop_and_duplicate_preserve_executed_state (test_controller_failures.ControllerTests.test_delays_drop_and_duplicate_preserve_executed_state) ... ok
+test_all_nine_hooks (test_crash.CrashTests.test_all_nine_hooks) ... ok
+test_release_rejects_test_flags (test_crash.CrashTests.test_release_rejects_test_flags) ... ok
+test_golden (test_differential.DifferentialTests.test_golden) ... ok
+test_hand_worked_variant_corpus (test_differential.DifferentialTests.test_hand_worked_variant_corpus) ... ok
+test_protocol_corpus (test_differential.DifferentialTests.test_protocol_corpus) ... ok
+test_twenty_seeds (test_differential.DifferentialTests.test_twenty_seeds) ... ok
+test_price_translation_and_identity_renaming (test_metamorphic.MetamorphicTests.test_price_translation_and_identity_renaming) ... ok
+test_all_byte_truncations_of_two_frames (test_persistence.PersistenceTests.test_all_byte_truncations_of_two_frames) ... ok
+test_corruption_and_read_only (test_persistence.PersistenceTests.test_corruption_and_read_only) ... ok
+test_durable_replay_snapshot_retries (test_persistence.PersistenceTests.test_durable_replay_snapshot_retries) ... ok
+test_empty_snapshot_and_suffix (test_persistence.PersistenceTests.test_empty_snapshot_and_suffix) ... ok
+test_lock_and_fresh_path_refusal (test_persistence.PersistenceTests.test_lock_and_fresh_path_refusal) ... ok
+test_cancellation_positions_and_fifo_partial (test_reference.ReferenceTests.test_cancellation_positions_and_fifo_partial) ... ok
+test_canonical_control_bytes_and_hash (test_reference.ReferenceTests.test_canonical_control_bytes_and_hash) ... ok
+test_golden_hand_calculated (test_reference.ReferenceTests.test_golden_hand_calculated) ... ok
+test_limits_precedence_and_sequence_exhaustion (test_reference.ReferenceTests.test_limits_precedence_and_sequence_exhaustion) ... ok
+test_protocol_and_no_mutation (test_reference.ReferenceTests.test_protocol_and_no_mutation) ... ok
+test_scope_rejected_retry_and_original_response (test_reference.ReferenceTests.test_scope_rejected_retry_and_original_response) ... ok
+test_seeded_conservation_retry_metamorphism (test_reference.ReferenceTests.test_seeded_conservation_retry_metamorphism) ... ok
+test_sweeps_both_sides_residual_and_price_priority (test_reference.ReferenceTests.test_sweeps_both_sides_residual_and_price_priority) ... ok
+test_schema_and_golden_variants (test_schemas.SchemaTests.test_schema_and_golden_variants) ... ok
+test_selected_failure_reports_and_benchmark_samples (test_schemas.SchemaTests.test_selected_failure_reports_and_benchmark_samples) ... ok
+test_all_mutants_detected (test_shrinker.ShrinkTests.test_all_mutants_detected) ... ok
+test_crash_shrinking_retargets_request_key (test_shrinker.ShrinkTests.test_crash_shrinking_retargets_request_key) ... ok
+test_generated_failure_reduced_and_validated (test_shrinker.ShrinkTests.test_generated_failure_reduced_and_validated) ... ok
+test_every_attempt_in_tiny_workload (test_state_trace.StateTraceTests.test_every_attempt_in_tiny_workload) ... {"accepted_orders":"58","attempts":"100","book_hash":"80dadb62ad212b3092089c8fcf2589491ce0c78ed5bc74a7c9e0bff4e68cf343","business_rejections":"5","cancellations":"20","component":"run_summary","conflicts":"4","duplicates":"6","last_applied_seq":"83","protocol_errors":"7","session_hash":"629aaf6fe7095eaa2f54cda7286011fdbacc6582cc7779f758e7a750da5677dd","unique_commands":"83","unique_trades":"28"}
+ok
+test_parser_syntax_precedes_duplicate_keys (test_state_trace.StateTraceTests.test_parser_syntax_precedes_duplicate_keys) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 19.212s
+
+OK
+/work/replaylab/.tools/opam exec --switch=/work/replaylab -- dune runtest --root .
+.venv/bin/ruff format --check python test scripts
+29 files already formatted
+.venv/bin/ruff check python test scripts
+All checks passed!
+/work/replaylab/.tools/opam exec --switch=/work/replaylab -- dune build --root . @fmt
+.venv/bin/python -m replaylab_tools demo
+Golden walkthrough: agreement; two distinct trades (10 + 2), one cancellation (5).
+Retries repeat event IDs without executing trades. Artifacts: /work/replaylab/artifacts/matching-vwzcsf4v/comparison
+{"attempts":"9","build_identity":"local working tree","candidate":"/work/replaylab/_build/default/bin/main.exe","candidate_args":[],"candidate_sha256":"390d49e8093882b4fe7c38a0a4dbe3998b49220af49fb390b5ec0a57b3296be5","configuration":{"max_accepted_orders":"100000","max_line_bytes":"16384","max_unique_requests":"200000"},"mode":"memory","reproduction":["python","-m","replaylab_tools","compare","--candidate","/work/replaylab/_build/default/bin/main.exe","--workload","/work/replaylab/artifacts/matching-vwzcsf4v/comparison/workload.jsonl","--session-id","golden","--out","NEW_DIRECTORY"],"schema_version":1,"semantics_version":"replaylab-v1","session_hash":"f7fe464fd537f6058bb8d3583b19746712aa1b678c85a8af87bbd6488047cebe","session_id":"golden","status":"agreement","workload_sha256":"2745b52560e4edf66f82a14d1455042456a16bb48a4142dae6573a575d9c59d6"}
+.venv/bin/python -m replaylab_tools demo-crash
+Actual SIGKILL at after_sync_before_apply; acknowledged 2, recovered prefix 3; final equality True. Artifacts: /work/replaylab/artifacts/crash-nusardmx/experiment
+{"acknowledged_responses":"2","candidate_sha256":"73a0383643a9bdc9315172e4e1d14505a222dbcef2d5595e9810f0cf98ae3e5b","durable_prefix":"3","evidence_scope":"process crash; OS page cache survives","final_equal":true,"hook":"after_sync_before_apply","hook_reached":true,"hook_seq":"3","incomplete_tail":false,"kill":"SIGKILL","prefix_equal":true,"schema_version":1,"unique_trades":"2","valid_bytes":"1203","workload_sha256":"2745b52560e4edf66f82a14d1455042456a16bb48a4142dae6573a575d9c59d6"}
+.venv/bin/python -m replaylab_tools demo-shrink
+Reduced 500 to 3 commands; 1-minimal under deletion; corrected engine: agreement. Artifacts: /work/replaylab/artifacts/shrink-ngz8op0s
+{"budget_exhausted":false,"cache_hits":"1","cached_artifacts_used":false,"corrected_status":"agreement","duration_seconds":"0.099418","evaluation_budget_scope":"reduction predicates; validation repetitions reported separately","evaluations":"48","final_bytes":"455","final_commands":"3","max_evaluations":"2000","minimality":"1-minimal under deletion","original_bytes":"68995","original_commands":"500","predicate":"event_mismatch:new:events[].buyer.client_id:different","reproduction_saved":true,"schema_version":1,"timeout_seconds":"300","validation_passed":true,"validation_repetitions":"3"}

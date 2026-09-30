@@ -1,0 +1,9 @@
+{"schema_version":1,"type":"new","client_id":"alice","request_id":"a1","instrument":"SIM","order_id":"A1","side":"sell","price_ticks":"100","quantity":"10"}
+{"schema_version":1,"type":"new","client_id":"bob","request_id":"b1","instrument":"SIM","order_id":"B1","side":"sell","price_ticks":"100","quantity":"7"}
+{"schema_version":1,"type":"new","client_id":"carol","request_id":"c1","instrument":"SIM","order_id":"C1","side":"buy","price_ticks":"101","quantity":"12"}
+{"schema_version":1,"type":"cancel","client_id":"bob","request_id":"b2","instrument":"SIM","order_id":"B1"}
+{"schema_version":1,"type":"new","client_id":"carol","request_id":"c1","instrument":"SIM","order_id":"C1","side":"buy","price_ticks":"101","quantity":"12"}
+{"schema_version":1,"type":"cancel","client_id":"bob","request_id":"b2","instrument":"SIM","order_id":"B1"}
+{"schema_version":1,"type":"cancel","client_id":"bob","request_id":"b3","instrument":"SIM","order_id":"B1"}
+{"schema_version":1,"type":"new","client_id":"bob","request_id":"b4","instrument":"SIM","order_id":"B1","side":"sell","price_ticks":"100","quantity":"1"}
+{"schema_version":1,"type":"new","client_id":"carol","request_id":"c1","instrument":"SIM","order_id":"C1","side":"buy","price_ticks":"101","quantity":"13"}

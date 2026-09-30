@@ -1,0 +1,4 @@
+# Optional schema validation and static plots; the runtime and base tests use stdlib.
+matplotlib==3.10.8
+jsonschema==4.25.1
+ruff==0.12.12

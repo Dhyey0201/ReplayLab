@@ -1,0 +1,1230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://replaylab.local/schemas/v1.json",
+  "$defs": {
+    "new": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "new"
+          ]
+        },
+        "client_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "instrument": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "side": {
+          "enum": [
+            "buy",
+            "sell"
+          ]
+        },
+        "price_ticks": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        },
+        "quantity": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "client_id",
+        "request_id",
+        "instrument",
+        "order_id",
+        "side",
+        "price_ticks",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "cancel": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "cancel"
+          ]
+        },
+        "client_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "instrument": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "client_id",
+        "request_id",
+        "instrument",
+        "order_id"
+      ],
+      "additionalProperties": false
+    },
+    "request": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/new"
+        },
+        {
+          "$ref": "#/$defs/cancel"
+        }
+      ]
+    },
+    "order_key": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        }
+      },
+      "required": [
+        "client_id",
+        "order_id"
+      ],
+      "additionalProperties": false
+    },
+    "trade": {
+      "type": "object",
+      "properties": {
+        "session_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "seq": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "event_index": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "instrument": {
+          "const": "SIM"
+        },
+        "type": {
+          "const": "trade"
+        },
+        "resting": {
+          "$ref": "#/$defs/order_key"
+        },
+        "incoming": {
+          "$ref": "#/$defs/order_key"
+        },
+        "buyer": {
+          "$ref": "#/$defs/order_key"
+        },
+        "seller": {
+          "$ref": "#/$defs/order_key"
+        },
+        "price_ticks": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        },
+        "quantity": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        }
+      },
+      "required": [
+        "session_id",
+        "seq",
+        "event_index",
+        "instrument",
+        "type",
+        "resting",
+        "incoming",
+        "buyer",
+        "seller",
+        "price_ticks",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "cancelled": {
+      "type": "object",
+      "properties": {
+        "session_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "seq": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "event_index": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "instrument": {
+          "const": "SIM"
+        },
+        "type": {
+          "const": "cancelled"
+        },
+        "order": {
+          "$ref": "#/$defs/order_key"
+        },
+        "cancelled_quantity": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        }
+      },
+      "required": [
+        "session_id",
+        "seq",
+        "event_index",
+        "instrument",
+        "type",
+        "order",
+        "cancelled_quantity"
+      ],
+      "additionalProperties": false
+    },
+    "event": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/trade"
+        },
+        {
+          "$ref": "#/$defs/cancelled"
+        }
+      ]
+    },
+    "new_accepted": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "accepted"
+        },
+        "command_type": {
+          "const": "new"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_status": {
+          "enum": [
+            "active",
+            "filled"
+          ]
+        },
+        "original_quantity": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        },
+        "filled_quantity": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "remaining_quantity": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "cancelled_quantity": {
+          "const": "0"
+        }
+      },
+      "required": [
+        "status",
+        "command_type",
+        "order_id",
+        "order_status",
+        "original_quantity",
+        "filled_quantity",
+        "remaining_quantity",
+        "cancelled_quantity"
+      ],
+      "additionalProperties": false
+    },
+    "cancel_accepted": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "accepted"
+        },
+        "command_type": {
+          "const": "cancel"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_status": {
+          "const": "cancelled"
+        },
+        "cancelled_quantity": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        }
+      },
+      "required": [
+        "status",
+        "command_type",
+        "order_id",
+        "order_status",
+        "cancelled_quantity"
+      ],
+      "additionalProperties": false
+    },
+    "rejected": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "rejected"
+        },
+        "command_type": {
+          "enum": [
+            "new",
+            "cancel"
+          ]
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "code": {
+          "enum": [
+            "UNKNOWN_INSTRUMENT",
+            "ORDER_ID_REUSED",
+            "SESSION_ORDER_LIMIT",
+            "ORDER_NOT_ACTIVE"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "command_type",
+        "order_id",
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "protocol_error": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "error"
+        },
+        "code": {
+          "const": "PROTOCOL_ERROR"
+        },
+        "subcode": {
+          "enum": [
+            "INVALID_UTF8",
+            "OVERSIZED_LINE",
+            "INVALID_JSON",
+            "DUPLICATE_OBJECT_KEY",
+            "UNKNOWN_FIELD",
+            "MISSING_FIELD",
+            "UNSUPPORTED_SCHEMA_VERSION",
+            "WRONG_FIELD_TYPE",
+            "INVALID_ID",
+            "INVALID_SIDE",
+            "INVALID_COMMAND_TYPE",
+            "INVALID_NUMERIC_ENCODING",
+            "NUMERIC_OUT_OF_RANGE"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "code",
+        "subcode"
+      ],
+      "additionalProperties": false
+    },
+    "infrastructure_error": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "error"
+        },
+        "code": {
+          "enum": [
+            "IDEMPOTENCY_CONFLICT",
+            "SESSION_REQUEST_LIMIT",
+            "SEQUENCE_EXHAUSTED"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "result": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/new_accepted"
+        },
+        {
+          "$ref": "#/$defs/cancel_accepted"
+        },
+        {
+          "$ref": "#/$defs/rejected"
+        },
+        {
+          "$ref": "#/$defs/protocol_error"
+        },
+        {
+          "$ref": "#/$defs/infrastructure_error"
+        }
+      ]
+    },
+    "semantic_response": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "result": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/new_accepted"
+            },
+            {
+              "$ref": "#/$defs/cancel_accepted"
+            },
+            {
+              "$ref": "#/$defs/rejected"
+            }
+          ]
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          }
+        }
+      },
+      "required": [
+        "seq",
+        "result",
+        "events"
+      ],
+      "additionalProperties": false
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "session_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "client_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "request_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "seq": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "duplicate": {
+          "type": "boolean"
+        },
+        "durability": {
+          "enum": [
+            "none",
+            "synced"
+          ]
+        },
+        "result": {
+          "$ref": "#/$defs/result"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "session_id",
+        "client_id",
+        "request_id",
+        "seq",
+        "duplicate",
+        "durability",
+        "result",
+        "events"
+      ],
+      "additionalProperties": false
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "max_accepted_orders": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "max_unique_requests": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "max_line_bytes": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        }
+      },
+      "required": [
+        "max_accepted_orders",
+        "max_unique_requests",
+        "max_line_bytes"
+      ],
+      "additionalProperties": false
+    },
+    "order": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "side": {
+          "enum": [
+            "buy",
+            "sell"
+          ]
+        },
+        "price_ticks": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        },
+        "original_quantity": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        },
+        "acceptance_seq": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "remaining_quantity": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "filled_quantity": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "cancelled_quantity": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "filled",
+            "cancelled"
+          ]
+        }
+      },
+      "required": [
+        "client_id",
+        "order_id",
+        "side",
+        "price_ticks",
+        "original_quantity",
+        "acceptance_seq",
+        "remaining_quantity",
+        "filled_quantity",
+        "cancelled_quantity",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "new_payload": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "new"
+        },
+        "instrument": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "side": {
+          "enum": [
+            "buy",
+            "sell"
+          ]
+        },
+        "price_ticks": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        },
+        "quantity": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        }
+      },
+      "required": [
+        "type",
+        "instrument",
+        "order_id",
+        "side",
+        "price_ticks",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "cancel_payload": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "cancel"
+        },
+        "instrument": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        }
+      },
+      "required": [
+        "type",
+        "instrument",
+        "order_id"
+      ],
+      "additionalProperties": false
+    },
+    "payload": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/new_payload"
+        },
+        {
+          "$ref": "#/$defs/cancel_payload"
+        }
+      ]
+    },
+    "cached_request": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "payload": {
+          "$ref": "#/$defs/payload"
+        },
+        "response": {
+          "$ref": "#/$defs/semantic_response"
+        }
+      },
+      "required": [
+        "client_id",
+        "request_id",
+        "payload",
+        "response"
+      ],
+      "additionalProperties": false
+    },
+    "session_state": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "semantics_version": {
+          "const": "replaylab-v1"
+        },
+        "session_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "configuration": {
+          "$ref": "#/$defs/configuration"
+        },
+        "last_applied_seq": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "next_seq": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/order"
+          }
+        },
+        "requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cached_request"
+          }
+        },
+        "event_count": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "event_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "semantics_version",
+        "session_id",
+        "configuration",
+        "last_applied_seq",
+        "next_seq",
+        "orders",
+        "requests",
+        "event_count",
+        "event_digest"
+      ],
+      "additionalProperties": false
+    },
+    "book_order": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "order_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "acceptance_seq": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "remaining_quantity": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        }
+      },
+      "required": [
+        "client_id",
+        "order_id",
+        "acceptance_seq",
+        "remaining_quantity"
+      ],
+      "additionalProperties": false
+    },
+    "level": {
+      "type": "object",
+      "properties": {
+        "price_ticks": {
+          "type": "string",
+          "pattern": "^([1-9][0-9]{0,8}|1000000000)$"
+        },
+        "quantity": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/book_order"
+          }
+        }
+      },
+      "required": [
+        "price_ticks",
+        "quantity",
+        "orders"
+      ],
+      "additionalProperties": false
+    },
+    "book_state": {
+      "type": "object",
+      "properties": {
+        "bids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/level"
+          }
+        },
+        "asks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/level"
+          }
+        }
+      },
+      "required": [
+        "bids",
+        "asks"
+      ],
+      "additionalProperties": false
+    },
+    "run_manifest": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "semantics_version": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "configuration": {
+          "$ref": "#/$defs/configuration"
+        },
+        "workload_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "candidate": {
+          "type": "string"
+        },
+        "candidate_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "candidate_args": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "build_identity": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "incomplete",
+            "mismatch",
+            "agreement",
+            "timeout",
+            "candidate_crash",
+            "invalid_candidate_output"
+          ]
+        },
+        "reproduction": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "attempts": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "session_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "semantics_version",
+        "mode",
+        "session_id",
+        "configuration",
+        "workload_sha256",
+        "candidate",
+        "candidate_sha256",
+        "candidate_args",
+        "build_identity",
+        "status",
+        "reproduction"
+      ],
+      "additionalProperties": false
+    },
+    "difference": {
+      "type": "object",
+      "properties": {
+        "attempt": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "seq": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "expected": {},
+        "actual": {},
+        "signature": {
+          "type": "string"
+        },
+        "book_before": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/book_state"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "book_after": {
+          "$ref": "#/$defs/book_state"
+        },
+        "command_raw": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "attempt",
+        "seq",
+        "path",
+        "expected",
+        "actual",
+        "signature",
+        "book_before",
+        "book_after"
+      ],
+      "additionalProperties": false
+    },
+    "shrink_report": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "predicate": {
+          "type": "string"
+        },
+        "max_evaluations": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "timeout_seconds": {
+          "type": "string"
+        },
+        "evaluations": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "cache_hits": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "duration_seconds": {
+          "type": "string"
+        },
+        "original_commands": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "final_commands": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "original_bytes": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "final_bytes": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "budget_exhausted": {
+          "type": "boolean"
+        },
+        "validation_repetitions": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "validation_passed": {
+          "type": "boolean"
+        },
+        "minimality": {
+          "type": "string"
+        },
+        "evaluation_budget_scope": {
+          "type": "string"
+        },
+        "reproduction_saved": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "predicate",
+        "max_evaluations",
+        "timeout_seconds",
+        "evaluations",
+        "cache_hits",
+        "duration_seconds",
+        "original_commands",
+        "final_commands",
+        "original_bytes",
+        "final_bytes",
+        "budget_exhausted",
+        "validation_repetitions",
+        "validation_passed",
+        "minimality"
+      ],
+      "additionalProperties": false
+    },
+    "benchmark_sample": {
+      "type": "object",
+      "properties": {
+        "elapsed_ns": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "sample_count": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "latency_median_ns": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "latency_p95_ns": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "latency_p99_ns": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "latency_max_ns": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "clock_pair_median_ns": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "attempts": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "unique_commands": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "accepted_orders": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "trades": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "duplicates": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "business_rejections": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "unsequenced_or_invalid": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "active_orders": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "active_levels": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "retained_orders": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "dedupe_entries": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "peak_rss_bytes": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "allocated_words": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "minor_collections": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "mode": {
+          "enum": [
+            "book-kernel",
+            "memory-session",
+            "json-batch",
+            "durable-session",
+            "recovery",
+            "recovery-with-snapshot"
+          ]
+        },
+        "samples_ns": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$"
+          }
+        },
+        "session_hash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "repetition": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "workload_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "mode",
+        "elapsed_ns",
+        "sample_count",
+        "latency_median_ns",
+        "latency_p95_ns",
+        "latency_p99_ns",
+        "latency_max_ns",
+        "clock_pair_median_ns",
+        "attempts",
+        "unique_commands",
+        "accepted_orders",
+        "trades",
+        "duplicates",
+        "business_rejections",
+        "unsequenced_or_invalid",
+        "active_orders",
+        "active_levels",
+        "retained_orders",
+        "dedupe_entries",
+        "peak_rss_bytes",
+        "allocated_words",
+        "minor_collections",
+        "samples_ns",
+        "session_hash"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

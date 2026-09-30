@@ -1,0 +1,210 @@
+sh scripts/setup.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 8617k  100 8617k    0     0  7728k      0  0:00:01  0:00:01 --:--:-- 7728k
+No configuration file found, using built-in defaults.
+Checking for available remotes: rsync and local, git.
+  - you won't be able to use mercurial repositories unless you install the hg command on your system.
+  - you won't be able to use darcs repositories unless you install the darcs command on your system.
+
+
+<><> Fetching repository information ><><><><><><><><><><><><><><><><><><><><><>
+[default] Initialised
+
+<><> Installing new switch packages <><><><><><><><><><><><><><><><><><><><><><>
+Switch invariant: ["ocaml-base-compiler" {= "5.2.1"}]
+
+<><> Processing actions <><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+-> installed base-bigarray.base
+-> installed base-threads.base
+-> installed base-unix.base
+-> installed ocaml-options-vanilla.1
+-> retrieved ocaml-config.3  (2 extra sources)
+-> retrieved ocaml-config.3  (2 extra sources)
+-> retrieved ocaml-base-compiler.5.2.1  (https://opam.ocaml.org/cache)
+-> installed ocaml-base-compiler.5.2.1
+-> installed ocaml-config.3
+-> installed ocaml.5.2.1
+-> installed base-domains.base
+-> installed base-nnp.base
+Done.
+# To update the current shell environment, run: eval $(opam env)
+The following actions will be performed:
+=== install 36 packages
+  - install astring                 0.8.5    [required by ocamlformat-lib]
+  - install base                    v0.17.3  [required by ocamlformat-lib]
+  - install base-bytes              base     [required by ocp-indent]
+  - install camlp-streams           5.0.1    [required by ocamlformat-lib]
+  - install cmdliner                1.3.0    [required by ocamlformat]
+  - install csexp                   1.5.2    [required by ocamlformat-lib]
+  - install digestif                1.3.0
+  - install dune                    3.17.2
+  - install dune-build-info         3.17.2   [required by ocamlformat-lib]
+  - install dune-configurator       3.18.2   [required by base]
+  - install either                  1.0.0    [required by ocamlformat-lib]
+  - install eqaf                    0.10
+  - install fix                     20250919 [required by ocamlformat-lib]
+  - install fpath                   0.7.3    [required by ocamlformat-lib]
+  - install menhir                  20260209 [required by ocamlformat-lib]
+  - install menhirCST               20260209 [required by menhir]
+  - install menhirGLR               20260209 [required by menhir]
+  - install menhirLib               20260209 [required by ocamlformat-lib]
+  - install menhirSdk               20260209 [required by ocamlformat-lib]
+  - install ocaml-version           4.1.4    [required by ocamlformat-lib]
+  - install ocaml_intrinsics_kernel v0.17.2  [required by base]
+  - install ocamlbuild              0.16.1   [required by fpath, astring, uuseg]
+  - install ocamlfind               1.9.8    [required by ocp-indent, astring, fpath, uuseg]
+  - install ocamlformat             0.26.2
+  - install ocamlformat-lib         0.26.2   [required by ocamlformat]
+  - install ocp-indent              1.8.1    [required by ocamlformat-lib]
+  - install re                      1.14.0   [required by ocamlformat]
+  - install result                  1.5      [required by ocamlformat-lib]
+  - install seq                     base     [required by yojson]
+  - install sexplib0                v0.17.0  [required by base]
+  - install stdio                   v0.17.0  [required by ocamlformat-lib]
+  - install topkg                   1.1.1    [required by fpath, astring, uuseg]
+  - install uucp                    18.0.0   [required by uuseg]
+  - install uuseg                   18.0.0   [required by ocamlformat-lib]
+  - install uutf                    1.0.4    [required by ocamlformat-lib]
+  - install yojson                  2.2.2
+
+<><> Processing actions <><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+-> retrieved camlp-streams.5.0.1  (https://opam.ocaml.org/cache)
+-> retrieved astring.0.8.5  (https://opam.ocaml.org/cache)
+-> retrieved csexp.1.5.2  (https://opam.ocaml.org/cache)
+-> retrieved base.v0.17.3  (https://opam.ocaml.org/cache)
+-> retrieved cmdliner.1.3.0  (https://opam.ocaml.org/cache)
+-> installed cmdliner.1.3.0
+-> retrieved digestif.1.3.0  (https://opam.ocaml.org/cache)
+-> retrieved dune.3.17.2, dune-build-info.3.17.2  (https://opam.ocaml.org/cache)
+-> retrieved dune-configurator.3.18.2  (https://opam.ocaml.org/cache)
+-> retrieved either.1.0.0  (https://opam.ocaml.org/cache)
+-> retrieved eqaf.0.10  (https://opam.ocaml.org/cache)
+-> retrieved fpath.0.7.3  (https://opam.ocaml.org/cache)
+-> retrieved ocaml-version.4.1.4  (https://opam.ocaml.org/cache)
+-> retrieved fix.20250919  (https://opam.ocaml.org/cache)
+-> retrieved menhir.20260209, menhirCST.20260209, menhirGLR.20260209, menhirLib.20260209, menhirSdk.20260209  (https://opam.ocaml.org/cache)
+-> retrieved ocaml_intrinsics_kernel.v0.17.2  (https://opam.ocaml.org/cache)
+-> retrieved ocamlbuild.0.16.1  (https://opam.ocaml.org/cache)
+-> retrieved ocamlfind.1.9.8  (https://opam.ocaml.org/cache)
+-> retrieved ocp-indent.1.8.1  (https://opam.ocaml.org/cache)
+-> retrieved ocamlformat.0.26.2, ocamlformat-lib.0.26.2  (https://opam.ocaml.org/cache)
+-> retrieved result.1.5  (https://opam.ocaml.org/cache)
+-> retrieved re.1.14.0  (https://opam.ocaml.org/cache)
+-> retrieved stdio.v0.17.0  (https://opam.ocaml.org/cache)
+-> retrieved sexplib0.v0.17.0  (https://opam.ocaml.org/cache)
+-> retrieved seq.base  (2 extra sources)
+-> retrieved seq.base  (2 extra sources)
+-> installed seq.base
+-> installed ocamlfind.1.9.8
+-> installed base-bytes.base
+-> retrieved topkg.1.1.1  (https://opam.ocaml.org/cache)
+-> retrieved uuseg.18.0.0  (https://opam.ocaml.org/cache)
+-> retrieved uutf.1.0.4  (https://opam.ocaml.org/cache)
+-> retrieved uucp.18.0.0  (https://opam.ocaml.org/cache)
+-> installed ocamlbuild.0.16.1
+-> retrieved yojson.2.2.2  (https://opam.ocaml.org/cache)
+-> installed topkg.1.1.1
+-> installed uutf.1.0.4
+-> installed astring.0.8.5
+-> installed fpath.0.7.3
+-> installed dune.3.17.2
+-> installed camlp-streams.5.0.1
+-> installed csexp.1.5.2
+-> installed either.1.0.0
+-> installed eqaf.0.10
+-> installed dune-build-info.3.17.2
+-> installed fix.20250919
+-> installed dune-configurator.3.18.2
+-> installed digestif.1.3.0
+-> installed menhirCST.20260209
+-> installed menhirGLR.20260209
+-> installed menhirLib.20260209
+-> installed menhirSdk.20260209
+-> installed ocaml-version.4.1.4
+-> installed ocaml_intrinsics_kernel.v0.17.2
+-> installed ocp-indent.1.8.1
+-> installed result.1.5
+-> installed re.1.14.0
+-> installed sexplib0.v0.17.0
+-> installed yojson.2.2.2
+-> installed uucp.18.0.0
+-> installed menhir.20260209
+-> installed base.v0.17.3
+-> installed uuseg.18.0.0
+-> installed stdio.v0.17.0
+-> installed ocamlformat-lib.0.26.2
+-> installed ocamlformat.0.26.2
+Done.
+
+<><> ocp-indent.1.8.1 installed successfully ><><><><><><><><><><><><><><><><><>
+=> This package requires additional configuration for use in editors. Install package 'user-setup', or manually:
+
+   * for Emacs, add these lines to ~/.emacs:
+     (add-to-list 'load-path "/work/replaylab/_opam/share/emacs/site-lisp")
+     (require 'ocp-indent)
+
+   * for Vim, add this line to ~/.vimrc:
+     set rtp^="/work/replaylab/_opam/share/ocp-indent/vim"
+# To update the current shell environment, run: eval $(opam env)
+Collecting attrs==26.1.0 (from -r python/requirements-dev.lock (line 1))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting contourpy==1.4.0 (from -r python/requirements-dev.lock (line 2))
+  Downloading contourpy-1.4.0-cp314-cp314-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl.metadata (3.8 kB)
+Collecting cycler==0.12.1 (from -r python/requirements-dev.lock (line 3))
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools==4.66.1 (from -r python/requirements-dev.lock (line 4))
+  Downloading fonttools-4.66.1-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (130 kB)
+Collecting jsonschema==4.25.1 (from -r python/requirements-dev.lock (line 5))
+  Downloading jsonschema-4.25.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting jsonschema-specifications==2025.9.1 (from -r python/requirements-dev.lock (line 6))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting kiwisolver==1.5.1 (from -r python/requirements-dev.lock (line 7))
+  Downloading kiwisolver-1.5.1-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl.metadata (5.2 kB)
+Collecting matplotlib==3.10.8 (from -r python/requirements-dev.lock (line 8))
+  Downloading matplotlib-3.10.8-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (52 kB)
+Collecting numpy==2.5.3 (from -r python/requirements-dev.lock (line 9))
+  Downloading numpy-2.5.3-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (6.6 kB)
+Collecting packaging==26.3 (from -r python/requirements-dev.lock (line 10))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pillow==12.3.0 (from -r python/requirements-dev.lock (line 11))
+  Downloading pillow-12.3.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (9.1 kB)
+Collecting pyparsing==3.3.3 (from -r python/requirements-dev.lock (line 12))
+  Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+Collecting python-dateutil==2.9.0.post0 (from -r python/requirements-dev.lock (line 13))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting referencing==0.37.0 (from -r python/requirements-dev.lock (line 14))
+  Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py==2026.6.3 (from -r python/requirements-dev.lock (line 15))
+  Downloading rpds_py-2026.6.3-cp314-cp314-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (4.1 kB)
+Collecting ruff==0.12.12 (from -r python/requirements-dev.lock (line 16))
+  Downloading ruff-0.12.12-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (25 kB)
+Collecting six==1.17.0 (from -r python/requirements-dev.lock (line 17))
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Downloading contourpy-1.4.0-cp314-cp314-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl (357 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.66.1-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (5.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.4/5.4 MB 24.1 MB/s  0:00:00
+Downloading jsonschema-4.25.1-py3-none-any.whl (90 kB)
+Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Downloading kiwisolver-1.5.1-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 32.4 MB/s  0:00:00
+Downloading matplotlib-3.10.8-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (9.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.6/9.6 MB 34.6 MB/s  0:00:00
+Downloading numpy-2.5.3-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (15.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.7/15.7 MB 31.3 MB/s  0:00:00
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pillow-12.3.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 34.1 MB/s  0:00:00
+Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Downloading rpds_py-2026.6.3-cp314-cp314-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (369 kB)
+Downloading ruff-0.12.12-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (12.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.3/12.3 MB 20.7 MB/s  0:00:00
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: six, ruff, rpds-py, pyparsing, pillow, packaging, numpy, kiwisolver, fonttools, cycler, attrs, referencing, python-dateutil, contourpy, matplotlib, jsonschema-specifications, jsonschema
+
+Successfully installed attrs-26.1.0 contourpy-1.4.0 cycler-0.12.1 fonttools-4.66.1 jsonschema-4.25.1 jsonschema-specifications-2025.9.1 kiwisolver-1.5.1 matplotlib-3.10.8 numpy-2.5.3 packaging-26.3 pillow-12.3.0 pyparsing-3.3.3 python-dateutil-2.9.0.post0 referencing-0.37.0 rpds-py-2026.6.3 ruff-0.12.12 six-1.17.0

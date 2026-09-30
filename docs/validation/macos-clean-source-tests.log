@@ -1,0 +1,35 @@
+test_native_scopes_counts_and_samples (test_benchmark.BenchmarkTests.test_native_scopes_counts_and_samples) ... ok
+test_sigint_closes_durable_session (test_cli.CLITests.test_sigint_closes_durable_session) ... ok
+test_usage_and_protocol_exit_codes (test_cli.CLITests.test_usage_and_protocol_exit_codes) ... ok
+test_all_nine_hooks (test_crash.CrashTests.test_all_nine_hooks) ... ok
+test_release_rejects_test_flags (test_crash.CrashTests.test_release_rejects_test_flags) ... ok
+test_golden (test_differential.DifferentialTests.test_golden) ... ok
+test_hand_worked_variant_corpus (test_differential.DifferentialTests.test_hand_worked_variant_corpus) ... ok
+test_protocol_corpus (test_differential.DifferentialTests.test_protocol_corpus) ... ok
+test_twenty_seeds (test_differential.DifferentialTests.test_twenty_seeds) ... ok
+test_all_byte_truncations_of_two_frames (test_persistence.PersistenceTests.test_all_byte_truncations_of_two_frames) ... ok
+test_corruption_and_read_only (test_persistence.PersistenceTests.test_corruption_and_read_only) ... ok
+test_durable_replay_snapshot_retries (test_persistence.PersistenceTests.test_durable_replay_snapshot_retries) ... ok
+test_empty_snapshot_and_suffix (test_persistence.PersistenceTests.test_empty_snapshot_and_suffix) ... ok
+test_lock_and_fresh_path_refusal (test_persistence.PersistenceTests.test_lock_and_fresh_path_refusal) ... ok
+test_cancellation_positions_and_fifo_partial (test_reference.ReferenceTests.test_cancellation_positions_and_fifo_partial) ... ok
+test_canonical_control_bytes_and_hash (test_reference.ReferenceTests.test_canonical_control_bytes_and_hash) ... ok
+test_golden_hand_calculated (test_reference.ReferenceTests.test_golden_hand_calculated) ... ok
+test_limits_precedence_and_sequence_exhaustion (test_reference.ReferenceTests.test_limits_precedence_and_sequence_exhaustion) ... ok
+test_protocol_and_no_mutation (test_reference.ReferenceTests.test_protocol_and_no_mutation) ... ok
+test_scope_rejected_retry_and_original_response (test_reference.ReferenceTests.test_scope_rejected_retry_and_original_response) ... ok
+test_seeded_conservation_retry_metamorphism (test_reference.ReferenceTests.test_seeded_conservation_retry_metamorphism) ... ok
+test_sweeps_both_sides_residual_and_price_priority (test_reference.ReferenceTests.test_sweeps_both_sides_residual_and_price_priority) ... ok
+test_schema_and_golden_variants (test_schemas.SchemaTests.test_schema_and_golden_variants) ... ok
+test_selected_failure_reports_and_benchmark_samples (test_schemas.SchemaTests.test_selected_failure_reports_and_benchmark_samples) ... ok
+test_all_mutants_detected (test_shrinker.ShrinkTests.test_all_mutants_detected) ... ok
+test_crash_shrinking_retargets_request_key (test_shrinker.ShrinkTests.test_crash_shrinking_retargets_request_key) ... ok
+test_generated_failure_reduced_and_validated (test_shrinker.ShrinkTests.test_generated_failure_reduced_and_validated) ... ok
+test_every_attempt_in_tiny_workload (test_state_trace.StateTraceTests.test_every_attempt_in_tiny_workload) ... {"accepted_orders":"58","attempts":"100","book_hash":"80dadb62ad212b3092089c8fcf2589491ce0c78ed5bc74a7c9e0bff4e68cf343","business_rejections":"5","cancellations":"20","component":"run_summary","conflicts":"4","duplicates":"6","last_applied_seq":"83","protocol_errors":"7","session_hash":"629aaf6fe7095eaa2f54cda7286011fdbacc6582cc7779f758e7a750da5677dd","unique_commands":"83","unique_trades":"28"}
+ok
+test_parser_syntax_precedes_duplicate_keys (test_state_trace.StateTraceTests.test_parser_syntax_precedes_duplicate_keys) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 28.534s
+
+OK

@@ -1,0 +1,4 @@
+(executables
+ (names main bench)
+ (public_names replaylab replaylab-bench)
+ (libraries replaylab unix yojson))

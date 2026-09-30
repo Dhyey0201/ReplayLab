@@ -1,0 +1,1 @@
+{"schema_version":1,"profile":"balanced","seed":42,"count":1000,"repetitions":5,"modes":["memory-session","json-batch","durable-session","recovery"]}

@@ -1,0 +1,3 @@
+(test
+ (name foundation)
+ (libraries replaylab unix yojson digestif))
